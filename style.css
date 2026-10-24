@@ -1,0 +1,1201 @@
+
+/* =========================================
+   DIWALI GREETINGS — FESTIVE GLOW
+   ========================================= */
+
+:root {
+  --bg: #10091f;
+  --bg-light: #1c1030;
+  --gold: #f9d77e;
+  --gold-bright: #ffe8a3;
+  --orange: #ff9c54;
+  --cream: #fff6e7;
+  --muted: #c1b3d2;
+  --glass: rgba(255, 255, 255, 0.045);
+  --border: rgba(249, 215, 126, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--cream);
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 38%, #301748 0%, transparent 47%),
+    radial-gradient(ellipse at 8% 80%, #24112d 0%, transparent 35%),
+    linear-gradient(145deg, #10091f, #170c28 55%, #0b0816);
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 100%),
+    radial-gradient(2px 2px at 80% 12%, #f9d77e 50%, transparent 100%),
+    radial-gradient(1px 1px at 70% 60%, #fff 50%, transparent 100%),
+    radial-gradient(2px 2px at 20% 72%, #f9d77e 50%, transparent 100%),
+    radial-gradient(1px 1px at 92% 82%, #fff 50%, transparent 100%),
+    radial-gradient(1px 1px at 40% 44%, #f9d77e 50%, transparent 100%);
+  background-size: 280px 280px;
+  z-index: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ambient-glow {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 151, 76, 0.07);
+  filter: blur(90px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+
+.topbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 7%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.brand {
+  text-decoration: none;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.brand-icon {
+  color: var(--gold);
+  font-size: 25px;
+  animation: slow-spin 12s linear infinite;
+}
+
+.brand-gold {
+  color: var(--gold);
+}
+
+.top-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  background: #ffc46b;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ffb75d;
+  animation: pulse 2s infinite;
+}
+
+/* Hero section */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: auto;
+  padding: 76px 22px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  animation: fade-up 0.8s both;
+}
+
+.eyebrow span {
+  color: var(--orange);
+  font-size: 16px;
+}
+
+.hero-title {
+  margin-top: 27px;
+  animation: fade-up 0.9s 0.1s both;
+}
+
+.title-small {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(21px, 4vw, 31px);
+  color: #e8d9ef;
+  font-style: italic;
+  margin-bottom: 2px;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(52px, 10vw, 100px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -3px;
+}
+
+h1 span {
+  display: inline-block;
+  background: linear-gradient(
+    110deg,
+    #fff0b8 0%,
+    #e9b84f 24%,
+    #fff0bd 47%,
+    #d89a34 70%,
+    #ffe8a3 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 20px rgba(245, 190, 83, 0.15));
+  animation: gold-shimmer 6s linear infinite;
+}
+
+.title-underline {
+  height: 1px;
+  width: 100px;
+  margin: 18px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.subtitle {
+  max-width: 500px;
+  margin-top: 23px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.95;
+  animation: fade-up 0.9s 0.2s both;
+}
+
+/* Decorative golden mandala */
+
+.mandala {
+  width: 205px;
+  height: 205px;
+  position: relative;
+  margin: 35px 0 30px;
+  display: grid;
+  place-items: center;
+  animation: fade-up 1s 0.25s both;
+}
+
+.mandala-ring {
+  position: absolute;
+  border: 1px solid rgba(249, 215, 126, 0.65);
+  border-radius: 50%;
+  inset: 0;
+}
+
+.ring-one {
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(249, 215, 126, 0.85) 0deg 1deg,
+      transparent 1deg 15deg
+    );
+  -webkit-mask: radial-gradient(
+    circle,
+    transparent 53%,
+    #000 54%,
+    #000 56%,
+    transparent 57%
+  );
+  mask: radial-gradient(
+    circle,
+    transparent 53%,
+    #000 54%,
+    #000 56%,
+    transparent 57%
+  );
+  animation: slow-spin 35s linear infinite;
+}
+
+.ring-two {
+  inset: 15px;
+  border-style: dashed;
+  border-color: rgba(249, 215, 126, 0.45);
+  animation: slow-spin 45s linear infinite reverse;
+}
+
+.ring-three {
+  inset: 34px;
+  border-width: 2px;
+  border-color: rgba(249, 215, 126, 0.65);
+  box-shadow: 0 0 25px rgba(249, 215, 126, 0.1);
+}
+
+.mandala-center {
+  font-size: 74px;
+  line-height: 1;
+  color: var(--gold);
+  text-shadow: 0 0 35px rgba(249, 215, 126, 0.4);
+  animation: center-glow 3s ease-in-out infinite;
+}
+
+.mandala-star {
+  position: absolute;
+  color: var(--gold-bright);
+  text-shadow: 0 0 14px var(--gold);
+}
+
+.star-one { top: 10px; left: 88px; }
+.star-two { right: 4px; top: 91px; }
+.star-three { bottom: 8px; left: 89px; }
+.star-four { left: 4px; top: 91px; }
+
+/* Greeting card */
+
+.greeting-card {
+  width: 100%;
+  max-width: 570px;
+  padding: 34px 36px 29px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 24px 90px rgba(0, 0, 0, 0.23),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 0 40px rgba(233, 177, 83, 0.035);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  animation: fade-up 1s 0.3s both;
+}
+
+.greeting-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(249, 215, 126, 0.45);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3),
+              0 0 45px rgba(249, 215, 126, 0.07);
+}
+
+.card-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.card-icon {
+  font-size: 16px;
+}
+
+.greeting-card h2 {
+  margin-top: 22px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(23px, 4vw, 30px);
+  font-weight: 500;
+  color: #ffedc8;
+}
+
+.greeting-card > p:not(.signature) {
+  max-width: 420px;
+  margin: 15px auto 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.card-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px auto 20px;
+  max-width: 170px;
+  color: var(--gold);
+}
+
+.card-divider::before,
+.card-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border));
+}
+
+.card-divider::after {
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+.greeting-card label {
+  display: block;
+  color: #c9b8d7;
+  font-size: 11px;
+}
+
+#sender {
+  width: min(100%, 270px);
+  margin-top: 12px;
+  padding: 11px 15px;
+  border-radius: 9px;
+  outline: none;
+  border: 1px solid rgba(249, 215, 126, 0.22);
+  background: rgba(0, 0, 0, 0.15);
+  color: var(--gold-bright);
+  text-align: center;
+  font-size: 13px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#sender:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(249, 215, 126, 0.09);
+}
+
+#sender::placeholder {
+  color: #9889a9;
+}
+
+.signature {
+  margin-top: 12px;
+  color: var(--gold);
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 17px;
+}
+
+/* Buttons */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 13px;
+  margin-top: 27px;
+  animation: fade-up 1s 0.4s both;
+}
+
+.primary-btn,
+.secondary-btn {
+  min-height: 48px;
+  padding: 0 23px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+              background 0.3s ease, border-color 0.3s ease;
+}
+
+.primary-btn {
+  color: #21132a;
+  border: 1px solid #ffdf91;
+  background: linear-gradient(115deg, #ffdb83, #fff0bd, #eeb95b);
+  box-shadow: 0 6px 24px rgba(255, 188, 77, 0.12);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(255, 188, 77, 0.27);
+}
+
+.secondary-btn {
+  color: var(--cream);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.secondary-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  background: rgba(249, 215, 126, 0.08);
+}
+
+.primary-btn:active,
+.secondary-btn:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.hint {
+  min-height: 20px;
+  margin-top: 20px;
+  color: #a99bb9;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Blessing cards */
+
+.blessings {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 10px 22px 65px;
+}
+
+.blessing {
+  padding: 24px 10px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.018);
+  transition: transform 0.35s, background 0.35s, border-color 0.35s;
+}
+
+.blessing:hover {
+  transform: translateY(-6px);
+  background: rgba(249, 215, 126, 0.045);
+  border-color: var(--border);
+}
+
+.blessing > span {
+  color: var(--gold);
+  font-size: 26px;
+  text-shadow: 0 0 15px rgba(249, 215, 126, 0.3);
+}
+
+.blessing h3 {
+  margin-top: 10px;
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.blessing p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* Footer and notifications */
+
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 20px 32px;
+}
+
+.footer-line {
+  height: 1px;
+  max-width: 500px;
+  margin: 0 auto 24px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+footer p {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+footer p span {
+  color: #ff8b83;
+}
+
+.footer-small {
+  margin-top: 12px;
+  color: #80718f;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.toast {
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  bottom: 25px;
+  max-width: calc(100vw - 32px);
+  padding: 13px 19px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--cream);
+  background: #241433;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  text-align: center;
+  opacity: 0;
+  transform: translate(-50%, 15px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Animations */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gold-shimmer {
+  to { background-position: 200% center; }
+}
+
+@keyframes slow-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  50% { opacity: 0.45; box-shadow: 0 0 3px #ffb75d; }
+}
+
+@keyframes center-glow {
+  50% { transform: scale(1.08); text-shadow: 0 0 48px rgba(249, 215, 126, 0.75); }
+}
+
+/* Responsive design */
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 21px 5%;
+  }
+
+  .brand {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .top-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+    gap: 6px;
+  }
+
+  .hero {
+    padding: 57px 18px 35px;
+  }
+
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.7px;
+    gap: 7px;
+  }
+
+  h1 {
+    letter-spacing: -2px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    max-width: 360px;
+  }
+
+  .mandala {
+    width: 175px;
+    height: 175px;
+    margin: 29px 0;
+  }
+
+  .mandala-center {
+    font-size: 64px;
+  }
+
+  .greeting-card {
+    padding: 27px 18px 24px;
+    border-radius: 16px;
+  }
+
+  .card-top {
+    font-size: 8px;
+    letter-spacing: 1.4px;
+    gap: 8px;
+  }
+
+  .greeting-card > p:not(.signature) {
+    font-size: 12px;
+  }
+
+  .actions {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    padding: 0 15px;
+    font-size: 11px;
+  }
+
+  .blessings {
+    gap: 8px;
+    padding: 5px 14px 45px;
+  }
+
+  .blessing {
+    padding: 18px 5px;
+  }
+
+  .blessing h3 {
+    font-size: 14px;
+  }
+
+  .blessing p {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 370px) {
+  .top-label {
+    letter-spacing: 0;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .greeting-card {
+    padding-inline: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ===== DIWALI COUNTDOWN ===== */
+
+.countdown-section {
+  margin: 28px auto 34px;
+  width: min(100%, 650px);
+  text-align: center;
+  animation: countdownReveal 1s ease both;
+}
+
+.countdown-label {
+  color: #f9d77e;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.countdown-box {
+  padding: 18px 8px;
+  border: 1px solid rgba(249, 215, 126, 0.35);
+  border-radius: 18px;
+  background: linear-gradient(
+    145deg,
+    rgba(120, 72, 180, 0.25),
+    rgba(255, 255, 255, 0.04)
+  );
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.countdown-box:hover {
+  transform: translateY(-7px) scale(1.04);
+  border-color: #f9d77e;
+  box-shadow: 0 0 25px rgba(249, 215, 126, 0.18);
+}
+
+.countdown-box span {
+  display: block;
+  color: #fff1bd;
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 18px rgba(255, 199, 90, 0.25);
+}
+
+.countdown-box small {
+  display: block;
+  margin-top: 6px;
+  color: #d9c8f5;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+}
+
+.countdown-note {
+  margin-top: 15px;
+  color: #ded2ee;
+  font-size: 0.95rem;
+}
+
+@keyframes countdownReveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== PERSONAL GREETING POPUP ===== */
+
+.greeting-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.greeting-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 4, 18, 0.78);
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.4s ease;
+}
+
+.greeting-modal.is-open .modal-backdrop {
+  backdrop-filter: blur(9px);
+}
+
+.modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 440px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px 26px;
+  text-align: center;
+  border: 1px solid rgba(235, 190, 255, 0.45);
+  border-radius: 28px;
+  color: #fff;
+  background:
+    radial-gradient(circle at top right, rgba(255, 92, 190, 0.18), transparent 45%),
+    linear-gradient(145deg, #211334, #100d23 75%);
+  box-shadow: 0 0 70px rgba(181, 94, 255, 0.22);
+  transform: translateY(35px) scale(0.88);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(.2, .8, .2, 1),
+              opacity 0.35s ease;
+}
+
+.greeting-modal.is-open .modal-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal-icon {
+  font-size: 2.7rem;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 16px rgba(255, 210, 100, 0.6));
+  animation: diyaFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes diyaFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-6px) rotate(3deg); }
+}
+
+.modal-eyebrow {
+  color: #f9d77e;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.modal-card h2 {
+  margin: 10px 0;
+  font-size: clamp(1.7rem, 6vw, 2.2rem);
+  background: linear-gradient(90deg, #ffe7a0, #ff9bd7, #c8a3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.modal-description {
+  color: #d9cde8;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.modal-card form {
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+.modal-card label {
+  margin-top: 7px;
+  color: #f1e5ff;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.modal-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 15px;
+  color: white;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(221, 190, 255, 0.25);
+  border-radius: 13px;
+  outline: none;
+  font: inherit;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease,
+              background 0.25s ease;
+}
+
+.modal-card input::placeholder {
+  color: #a99bb9;
+}
+
+.modal-card input:focus {
+  border-color: #e5a4ff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 4px rgba(196, 123, 255, 0.12);
+}
+
+.modal-submit {
+  width: 100%;
+  margin-top: 12px;
+  padding: 15px;
+  font-size: 1rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+  background: rgba(255, 100, 170, 0.25);
+}
+
+.modal-small {
+  margin: 22px 0 0;
+  color: #bda9d3;
+  font-size: 0.78rem;
+}
+
+/* ===== MOBILE & ACCESSIBILITY ===== */
+
+@media (max-width: 420px) {
+  .countdown {
+    gap: 7px;
+  }
+
+  .countdown-box {
+    padding: 14px 4px;
+    border-radius: 13px;
+  }
+
+  .countdown-box small {
+    font-size: 0.68rem;
+    letter-spacing: 0;
+  }
+
+  .modal-card {
+    padding: 30px 20px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown-section,
+  .modal-icon {
+    animation: none;
+  }
+
+  .greeting-modal,
+  .modal-card,
+  .countdown-box,
+  .modal-close {
+    transition: none;
+  }
+}
+
+
+.recipient-greeting {
+  color: #ffd98a;
+  font-size: 1.15rem;
+  font-weight: 700;
+  animation: countdownReveal 0.5s ease both;
+}
+
+.recipient-greeting[hidden] {
+  display: none;
+}
+
+
+.developer-credit {
+  margin-top: 18px;
+  color: #c6b5dc;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.developer-credit span {
+  color: #ffd98a;
+  font-weight: 800;
+  text-shadow: 0 0 14px rgba(255, 217, 138, 0.3);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.developer-credit span:hover {
+  color: #ff9bd7;
+  text-shadow: 0 0 18px rgba(255, 155, 215, 0.5);
+}
+
+
+
+/* ===== FULL-SCREEN FIREWORKS CANVAS ===== */
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Keep the greeting popup above the fireworks */
+.greeting-modal {
+  z-index: 9999;
+}
+
+
+/* ===== CREATE GREETINGS BUTTON ===== */
+
+.love-greeting-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 15px 24px;
+  overflow: hidden;
+  isolation: isolate;
+
+  border: 1px solid rgba(255, 220, 150, 0.75);
+  border-radius: 16px;
+
+  background: linear-gradient(
+    115deg,
+    #ffd978 0%,
+    #ffb4d9 48%,
+    #d7a4ff 100%
+  );
+
+  color: #271033;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 24px rgba(255, 173, 210, 0.2),
+    0 0 20px rgba(255, 215, 120, 0.15);
+
+  animation: loveButtonFloat 3s ease-in-out infinite;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* Moving light shine */
+.love-greeting-btn::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.75) 50%,
+    transparent 65%
+  );
+
+  transform: translateX(-120%);
+  animation: loveButtonShine 4s ease-in-out infinite;
+}
+
+/* Hover effect for mouse users */
+.love-greeting-btn:hover {
+  transform: translateY(-4px) scale(1.025);
+  filter: saturate(1.12);
+
+  box-shadow:
+    0 12px 32px rgba(255, 173, 210, 0.35),
+    0 0 32px rgba(255, 215, 120, 0.3);
+}
+
+/* Press effect */
+.love-greeting-btn:active {
+  transform: scale(0.97);
+}
+
+/* Keyboard accessibility */
+.love-greeting-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 5px;
+}
+
+.love-btn-icon,
+.love-btn-sparkle {
+  display: inline-block;
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+
+.love-greeting-btn:hover .love-btn-icon {
+  transform: rotate(-12deg) scale(1.2);
+}
+
+.love-greeting-btn:hover .love-btn-sparkle {
+  transform: rotate(25deg) scale(1.3);
+}
+
+@keyframes loveButtonFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes loveButtonShine {
+  0%, 55% {
+    transform: translateX(-120%);
+  }
+  80%, 100% {
+    transform: translateX(120%);
+  }
+}
+
+/* Small-screen support */
+@media (max-width: 480px) {
+  .love-greeting-btn {
+    width: 100%;
+    padding: 14px 12px;
+    gap: 8px;
+    font-size: 0.88rem;
+    border-radius: 14px;
+  }
+}
+
+/* Respect device motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .love-greeting-btn,
+  .love-greeting-btn::before {
+    animation: none;
+  }
+
+  .love-greeting-btn,
+  .love-btn-icon,
+  .love-btn-sparkle {
+    transition: none;
+  }
+}
