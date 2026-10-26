@@ -363,59 +363,41 @@ function getGreeting() {
     "With love and festive wishes,\n— " + name
   );
 }
-
+//popup
 // =============================================
 // SHARE GREETING
 // =============================================
 
-async function shareGreeting() {
-  const greeting = getGreeting();
 
-  if (navigator.share) {
-    try {
+async function shareGreeting() {
+  const shareURL = currentRecipient
+    ? makePersonalizedURL(currentRecipient, currentSender || "Your Friend")
+    : window.location.href;
+
+  const greeting = currentRecipient
+    ? `🪔 Happy Diwali, ${currentRecipient}!\n\nMay your life shine with happiness, prosperity and peace.\n\nWith love,\n— ${currentSender || "Your Friend"}`
+    : getGreeting();
+
+  try {
+    if (navigator.share) {
       await navigator.share({
         title: "Happy Diwali 🪔",
         text: greeting,
-        url: window.location.href
+        url: shareURL
       });
 
-      showToast("✨ Thanks for spreading the Diwali magic!");
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        showToast("Sharing unavailable. Try copying the greeting.");
-      }
+      showToast("✨ Your personalized greeting is ready to share!");
+    } else {
+      await navigator.clipboard.writeText(shareURL);
+      showToast("✨ Personalized link copied! Share it with your loved ones.");
     }
-
-    return;
-  }
-
-  try {
-    await navigator.clipboard.writeText(greeting);
-    showToast("✨ Greeting copied! Share it with your loved ones.");
-  } catch {
-    const textArea = document.createElement("textarea");
-    textArea.value = greeting;
-    textArea.style.position = "fixed";
-    textArea.style.opacity = "0";
-
-    document.body.appendChild(textArea);
-    textArea.select();
-
-    try {
-      const copied = document.execCommand("copy");
-
-      showToast(
-        copied
-          ? "✨ Greeting copied! Share it with your loved ones."
-          : "Please copy the greeting manually."
-      );
-    } catch {
-      showToast("Clipboard unavailable. Please copy manually.");
-    } finally {
-      textArea.remove();
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      showToast("Sharing failed. Please try again.");
     }
   }
 }
+
 
 shareBtn.addEventListener("click", shareGreeting);
 
@@ -485,15 +467,23 @@ const closeGreetingBtn = document.getElementById("closeGreetingBtn");
 const modalBackdrop = document.getElementById("modalBackdrop");
 const greetingForm = document.getElementById("greetingForm");
 
+
 function openGreetingPopup() {
   greetingModal.classList.add("is-open");
   greetingModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 
+  const recipientInput = document.getElementById("recipientInput");
+  const popupSender = document.getElementById("senderInput");
+
+  recipientInput.value = "";
+  popupSender.value = currentRecipient || "";
+
   setTimeout(() => {
-    document.getElementById("recipientInput").focus();
+    recipientInput.focus();
   }, 200);
 }
+
 
 function closeGreetingPopup() {
   greetingModal.classList.remove("is-open");
@@ -511,52 +501,89 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-greetingForm.addEventListener("submit", (event) => {
-  event.preventDefault();
 
-  const recipient = document.getElementById("recipientInput").value.trim();
-  const senderName = document.getElementById("senderInput").value.trim();
+let currentRecipient = "";
+let currentSender = "";
 
-  if (!recipient || !senderName) {
-    return;
-  }
+function updatePersonalizedGreeting(recipient, sender) {
+  currentRecipient = recipient;
+  currentSender = sender;
 
-  // Show the recipient's name on the greeting card
   const recipientGreeting = document.getElementById("recipientGreeting");
 
   if (recipientGreeting) {
-    recipientGreeting.textContent = `Dear ${recipient},`;
+    recipientGreeting.textContent = `Dear ${recipient}, 🪔`;
     recipientGreeting.hidden = false;
   }
 
-  // Update the existing sender field and signature, if present
-  const existingSender = document.getElementById("sender");
+  senderInput.value = sender;
+  updateSignature();
 
-  if (existingSender) {
-    existingSender.value = senderName;
-    existingSender.dispatchEvent(new Event("input", { bubbles: true }));
-    existingSender.dispatchEvent(new Event("change", { bubbles: true }));
+  const signatureElement = document.getElementById("signature");
+  if (signatureElement) {
+    signatureElement.textContent = `With love, ${sender} 💖`;
   }
+}
 
-  const signature = document.getElementById("signature");
+function makePersonalizedURL(recipient, sender) {
+  const url = new URL(window.location.href);
 
-  if (signature) {
-    signature.textContent = `With love, ${senderName} 💖`;
-  }
+  url.searchParams.set("to", recipient);
+  url.searchParams.set("from", sender);
+
+  return url.href;
+}
+
+greetingForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const recipient = document
+    .getElementById("recipientInput").value.trim();
+
+  const senderName = document
+    .getElementById("senderInput").value.trim();
+
+  if (!recipient || !senderName) return;
+
+  updatePersonalizedGreeting(recipient, senderName);
+
+  // Update the URL for this person's greeting.
+  const personalizedURL = makePersonalizedURL(
+    recipient,
+    senderName
+  );
+
+  window.history.replaceState({}, "", personalizedURL);
 
   closeGreetingPopup();
 
-  if (typeof showToast === "function") {
-    showToast(`✨ Greeting ready for ${recipient}!`);
-  }
+  showToast(`✨ Greeting ready for ${recipient}!`);
 
-  // Bring the greeting card into view
-  const greetingCard = document.querySelector(".greeting-card");
-
-  if (greetingCard) {
-    greetingCard.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
+  document.querySelector(".greeting-card")
+    ?.scrollIntoView({ behavior: "smooth", block: "center" });
 });
+
+// Read names from a personalized link when the page opens.
+function loadPersonalizedGreeting() {
+  const params = new URLSearchParams(window.location.search);
+  const recipient = params.get("to");
+  const sender = params.get("from");
+
+  if (recipient) {
+    const safeRecipient = recipient.trim().slice(0, 40);
+    const safeSender = (sender || "Your Friend").trim().slice(0, 40);
+
+    if (safeRecipient) {
+      updatePersonalizedGreeting(safeRecipient, safeSender);
+
+      // The recipient can now make a greeting for someone else.
+      document.getElementById("senderInput").value = safeRecipient;
+    }
+  }
+}
+
+loadPersonalizedGreeting();
+
 
 
 

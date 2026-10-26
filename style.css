@@ -1199,3 +1199,18 @@ footer p span {
     transition: none;
   }
 }
+
+
+/* Make recipient name stand out */
+#recipientGreeting {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  text-align: center;
+  color: #ffd76a;
+  margin: 18px 0;
+  text-shadow:
+    0 0 8px rgba(255, 215, 106, 0.8),
+    0 0 18px rgba(255, 156, 84, 0.6);
+  letter-spacing: 1px;
+}
+
