@@ -18,13 +18,14 @@ const reducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
 
+const isMobile = window.matchMedia("(max-width: 600px)").matches;
+
 const COLORS = [
   "#FFE8A3", "#F9D77E", "#FF9C54", "#FF5F8F",
   "#C49AFF", "#74D7FF", "#FFFFFF", "#FFCB69"
 ];
 
-const MAX_PARTICLES = 1200;
-
+const MAX_PARTICLES = isMobile ? 350 : 800;
 let particles = [];
 let rockets = [];
 let animationFrame = null;
@@ -38,7 +39,10 @@ let currentSender = "";
 function resizeCanvas() {
   if (!canvas || !ctx) return;
 
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = Math.min(
+  window.devicePixelRatio || 1,
+  isMobile ? 1.25 : 2
+);
   canvas.width = Math.floor(window.innerWidth * dpr);
   canvas.height = Math.floor(window.innerHeight * dpr);
   canvas.style.width = `${window.innerWidth}px`;
@@ -216,7 +220,7 @@ function animate() {
     ctx.strokeStyle = p.color;
     ctx.fillStyle = p.color;
     ctx.shadowColor = p.color;
-    ctx.shadowBlur = 10;
+    ctx.shadowBlur = isMobile ? 0 : 10;
 
     if (p.trail) {
       ctx.lineWidth = Math.max(0.5, p.radius * 0.75);
